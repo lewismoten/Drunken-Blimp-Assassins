@@ -1,14 +1,23 @@
-import {Scene} from "./scene.js";
+import {mapRenderer} from "./map.js";
+import {fpsRenderer} from "./fps.js";
 
-var map = new Scene(document, document.body, {width: 640, height: 400});
+var canvas = document.createElement("canvas");
+canvas.width = 640;
+canvas.height = 480;
+window.document.body.appendChild(canvas);
 
-var lastFrame = Date.now();
+var context = canvas.getContext("2d");
+context.imageSmoothingEnabled = false;
+
+let renderers = [];
+renderers.push(mapRenderer(canvas));
+renderers.push(fpsRenderer(canvas));
+
 main();
 
-function main() {
-  var now = Date.now();
-  var delta = now - lastFrame;
-  lastFrame = now;
-  map.render();
+function main(ts) {
+  renderers.forEach(function(render) {
+    render(ts);
+  });
   requestAnimationFrame(main);
 };
