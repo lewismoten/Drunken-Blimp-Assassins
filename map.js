@@ -16,9 +16,9 @@ function mapRenderer(canvas) {
   }
 
   function renderTiles() {
-    let tileSize = 12;
-    for (let y = 0; y < 20; y++) {
-      for (let x = 0; x < 20; x++) {
+    let tileSize = 20;
+    for (let y = 0; y < canvas.height / tileSize; y++) {
+      for (let x = 0; x < canvas.width / tileSize; x++) {
         context.fillStyle = y % 2 === x % 2 ? "#000000" : "#ffffff";
         context.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
       }
