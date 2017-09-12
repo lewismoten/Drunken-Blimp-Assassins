@@ -25,9 +25,8 @@ function main(ts) {
 
   // make something interactive...
   if (input.history.join(",") === "up,up,down,down,left,right,left,right,b,a") {
-    fps.color = "red";
-  } else {
-    fps.color = "yellow";
+    fps.color = fps.color === "red" ? "yellow" : "red";
+    input.history.length = 0;
   }
 
   renderers.forEach(function(render) {
