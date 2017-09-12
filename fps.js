@@ -28,7 +28,7 @@ function fpsRenderer(canvas) {
 
     // Filled Text
     context.lineWidth = 1;
-    context.fillStyle = "yellow";
+    context.fillStyle = render.color || "yellow";
     context.fillText(text, x, y);
 
   }
